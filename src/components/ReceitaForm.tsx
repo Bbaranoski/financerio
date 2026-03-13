@@ -52,7 +52,7 @@ export default function ReceitaForm({ onAddReceita }: Props) {
                 type="number"
                 placeholder="Valor"
                 value={valor}
-                onChange={(e) => setDescricao(e.target.value)}
+                onChange={(e) => setValor(e.target.value)}
             />
 
             <button className="bg-green-600 text-white p-2 rounded"
