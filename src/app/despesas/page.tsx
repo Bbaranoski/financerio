@@ -6,15 +6,15 @@ import TransactionForm from "@/components/TransactionForm"
 import { Transaction } from "@/types/transaction"
 
 export default function DespesasPage() {
-    const [despesas, setDespesas] = useState<Transaction[]> ([])
+    const [despesas, setDespesas] = useState<Transaction[]>([])
 
     function adicionarReceita(despesas: Transaction) {
         setDespesas((prev) => [...prev, despesas])
     }
 
-    return(
+    return (
         <div className="max-w-4xl mx-auto p-6">
-            <h1 className="text-2xl font-bold mb-6">Controle de Receitas</h1>
+            <h1 className="text-2xl font-bold mb-6">Controle de Despesas</h1>
 
             <TransactionForm onAdd={adicionarReceita} type="saida" />
 

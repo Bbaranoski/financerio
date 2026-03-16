@@ -1,0 +1,31 @@
+import { ReactNode } from "react"
+
+type Props = {
+    titulo: string
+    valor: number
+    cor: "entrada" | "saida" | "saldo"
+    icone: ReactNode
+}
+
+export default function SummaryCard({ titulo, valor, cor, icone }: Props) {
+    return (
+        <div className="bg-white p-6 rounded-xl shadow-sm flex justify-between">
+            <div>
+                <p className="text-gray-500">
+                    {titulo}
+                </p>
+
+                <h2 className={`text-2xl font-bold ${(cor === "entrada") ? "text-green-600" :
+                        (cor === "saida") ? "text-red-600" :
+                            "text-gray-800"}`}
+                >
+                    R$ {valor}
+                </h2>
+            </div>
+            
+            <div className="text-gray-400">
+                {icone}
+            </div>
+        </div>
+    )
+}

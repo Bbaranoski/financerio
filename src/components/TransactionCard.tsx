@@ -1,4 +1,5 @@
 import { Transaction } from "@/types/transaction";
+import { ArrowUpRight, ArrowDownRight } from "lucide-react";
 
 type Props = {
     transaction: Transaction
@@ -7,7 +8,7 @@ type Props = {
 export default function TransactionCard({ transaction }: Props) {
     const isEntrada = transaction.tipo === "entrada"
 
-    return(
+    return (
         <div className="bg-white p-4 rounded-lg shadow flex justify-between">
             <div>
                 <h3 className="font-semibold">
@@ -19,11 +20,15 @@ export default function TransactionCard({ transaction }: Props) {
                 </p>
             </div>
 
-            <span className={`font-bold ${
+            <span className={`font-bold flex items-center gap-1 ${
                 isEntrada ? "text-green-600" : "text-red-600"
                 }`}
             >
-                {isEntrada ? "+" : "-"} R$ {transaction.valor}
+                {isEntrada ? 
+                    <ArrowUpRight /> : 
+                    <ArrowDownRight />
+                } 
+                R$ {transaction.valor}
             </span>
         </div>
     )
