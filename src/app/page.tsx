@@ -1,27 +1,58 @@
 "use client"
 
 import { useState } from "react"
-import ReceitaCard from "@/components/ReceitaCard"
-import ReceitaForm from "@/components/ReceitaForm"
-import { Receita } from "@/types/receita"
 
-export default function ReceitaPage() {
-    const [receita, setReceita] = useState<Receita[]> ([])
+export default function Home() {
+    
+    const receitas = [
+        { valor: 1000 },
+        { valor: 26000 }
+    ]
 
-    function adicionarReceita(receita: Receita) {
-        setReceita((prev) => [...prev, receita])
-    }
+    const despesas = [
+        { valor: 25 },
+        { valor: 1000}
+    ]
+
+    const totalReceitas = receitas.reduce(
+        (acc, r) => acc + r.valor,
+        0
+    )
+
+    const totalDespesas = despesas.reduce(
+        (acc, r) => acc + r.valor,
+        0
+    )
+
+    const saldo = totalReceitas - totalDespesas
 
     return(
-        <div className="max-w-4xl mx-auto p-6">
-            <h1 className="text-2xl font-bold mb-6">Controle de Receitas</h1>
+        <div className="flex flex-col gap-6">
+            <h1 className="text-2xl font-bold">
+                Dashboard
+            </h1>
 
-            <ReceitaForm onAddReceita={adicionarReceita} />
+            <div className="grid grid-cols-3 gap-4">
+                <div className="bg-white p-4 rounded shadow">
+                    <p>Saldo</p>
+                    <h2 className="text-xl font-bold">
+                        R$ {saldo}
+                    </h2>
+                </div>
 
-            <div className="grid grid-cols-1 mb:grid-cols-2 gap-4 mt-6">
-                {receita.map((receita) => (
-                    <ReceitaCard key={receita.id} receita={receita} />
-                ))}
+                <div className="bg-white p-4 rounded shadow">
+                    <p>Receitas</p>
+                    <h2 className="text-green-600 font-bold">
+                        R$ {totalReceitas}
+                    </h2>
+                </div>
+
+                <div className="bg-white p-4 rounded shadow">
+                    <p>Despesas</p>
+                    <h2 className="text-red-600 font-bold">
+                        R$ {totalDespesas}
+                    </h2>
+                </div>
             </div>
         </div>
     )
