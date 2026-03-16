@@ -3,10 +3,11 @@
 import { useState } from "react"
 
 type Props = {
-    onAddReceita: (receita: any) => void
+    onAdd: (transaction: any) => void
+    type: "entrada" | "saida"
 }
 
-export default function ReceitaForm({ onAddReceita }: Props) {
+export default function TransactionForm({ onAdd, type }: Props) {
     const [nome, setNome] = useState("")
     const [descricao, setDescricao] = useState("")
     const [valor, setValor] = useState("")
@@ -14,15 +15,15 @@ export default function ReceitaForm({ onAddReceita }: Props) {
     function handleSubmit(e: any) {
         e.preventDefault()
 
-        const novaReceita = {
+        const novaTransaction = {
             id: crypto.randomUUID(),
             nome,
             descricao,
             valor: Number(valor),
-            tipo: "entrada"
+            tipo: type
         }
 
-        onAddReceita(novaReceita)
+        onAdd(novaTransaction)
 
         setNome("")
         setDescricao("")
@@ -33,7 +34,7 @@ export default function ReceitaForm({ onAddReceita }: Props) {
         <form className="flex flex-col gap-3 border p-4 rounded-lg bg-white"
             onSubmit={handleSubmit}
         >
-            <h2 className="text-lg font-semibold">Adicionar Receita</h2>
+            <h2 className="text-lg font-semibold">Adicionar {(type ==="entrada") ? "Receita" : "Despesa"}</h2>
 
             <input className="border p-2 rounded"
                 placeholder="Nome"
@@ -55,10 +56,11 @@ export default function ReceitaForm({ onAddReceita }: Props) {
                 onChange={(e) => setValor(e.target.value)}
             />
 
-            <button className="bg-green-600 text-white p-2 rounded"
+            <button className={`text-white p-2 rounded ${
+            (type === "entrada") ? "bg-green-600" : "bg-red-600"}`}
                 type="submit"
             >
-                Adicionar
+                Adicionar {(type === "entrada") ? "Receita" : "Despesa"}
             </button>
         </form>
     )
