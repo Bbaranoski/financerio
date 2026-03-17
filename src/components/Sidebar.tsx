@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { Home, TrendingUp, TrendingDown } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Sidebar() {
     return (
-        <aside className="w-64 h-screen bg-gray-900 text-white flex flex-col">
-            <h2 className="p-6 text-2xl font-bold border-b border-gray-700">
-                Financeiro
+        <aside className="w-64 h-screen bg-zinc-950 dark:bg-zinc-50 text-white dark:text-black flex flex-col">
+            <h2 className="p-6 text-2xl font-bold border-b border-gray-700 flex justify-between">
+                Financeiro <ThemeToggle />
             </h2>
 
             <nav className="flex flex-col gap-2 p-4">
@@ -28,7 +29,7 @@ export default function Sidebar() {
                 >
                     <TrendingDown size={18} />
                     Despesas
-                </Link>
+                </Link>                
             </nav>
         </aside>
     )

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
+import { ThemeProvider } from "next-themes";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,17 +25,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="min-h-screen"
+    <html lang="en" suppressHydrationWarning>
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem
+      >
+        <body className="min-h-screen"
       >
         <div className="flex">
           <Sidebar/>
 
-          <main className="flex-1 p-6 bg-gray-100">
+          <main className="flex-1 p-6 bg-zinc-50 dark:bg-zinc-950">
             {children}
           </main>
         </div>
       </body>
+      </ThemeProvider>     
     </html>
   );
 }
