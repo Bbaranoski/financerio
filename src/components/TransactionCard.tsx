@@ -9,7 +9,7 @@ export default function TransactionCard({ transaction }: Props) {
     const isEntrada = transaction.tipo === "entrada"
 
     return (
-        <div className="bg-white p-4 rounded-lg shadow flex justify-between">
+        <div className="bg-zinc-50 dark:bg-black p-4 rounded-lg shadow flex justify-between">
             <div>
                 <h3 className="font-semibold">
                     {transaction.nome}

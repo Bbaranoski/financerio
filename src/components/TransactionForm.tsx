@@ -31,7 +31,7 @@ export default function TransactionForm({ onAdd, type }: Props) {
     }
 
     return (
-        <form className="flex flex-col gap-3 border p-4 rounded-lg bg-white"
+        <form className="flex flex-col gap-3 border p-4 rounded-lg bg-zinc-50 dark:bg-black"
             onSubmit={handleSubmit}
         >
             <h2 className="text-lg font-semibold">Adicionar {(type ==="entrada") ? "Receita" : "Despesa"}</h2>
