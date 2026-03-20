@@ -28,12 +28,12 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem
       >
-        <body className="min-h-screen"
+        <body className="min-h-screen transition-colors duration-300"
       >
         <div className="flex">
           <Sidebar/>
 
-          <main className="flex-1 p-6 bg-zinc-100 dark:bg-zinc-800">
+          <main className="flex-1 p-6 bg-zinc-100 dark:bg-zinc-800 transition-colors duration-300">
             {children}
           </main>
         </div>

@@ -4,7 +4,7 @@ import { Wallet, TrendingUp, TrendingDown } from "lucide-react"
 export default function Home() {
     return (
         <div className="flex flex-col gap-6">
-            <h1 className="text-2xl font-bold">
+            <h1 className="text-2xl font-bold text-black dark:text-white transition-colors duration-300">
                 Dashboard
             </h1>
 
